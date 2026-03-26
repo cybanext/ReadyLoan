@@ -1,0 +1,622 @@
+
+<style>
+*{box-sizing:border-box;margin:0;padding:0}
+body{font-family:var(--font-sans)}
+.rl-wrap{background:var(--color-background-primary);color:var(--color-text-primary);overflow:hidden}
+
+/* hero */
+.hero{background:#0E3D6B;padding:56px 40px 64px;text-align:center;position:relative;overflow:hidden}
+.hero::before{content:'';position:absolute;top:-60px;right:-60px;width:260px;height:260px;border-radius:50%;background:#1a5a9a;opacity:.3}
+.hero::after{content:'';position:absolute;bottom:-80px;left:-40px;width:200px;height:200px;border-radius:50%;background:#0a2d52;opacity:.4}
+.logo-row{display:flex;align-items:center;justify-content:space-between;margin-bottom:48px;position:relative;z-index:1}
+.logo{display:flex;align-items:center;gap:10px}
+.logo-mark{width:36px;height:36px;background:#27C47A;border-radius:10px;display:flex;align-items:center;justify-content:center}
+.logo-mark svg{width:20px;height:20px}
+.logo-name{font-size:20px;font-weight:500;color:#fff;letter-spacing:-.3px}
+.logo-name span{color:#27C47A}
+.hero-nav{display:flex;gap:6px}
+.hn-btn{padding:8px 16px;border-radius:8px;font-size:13px;font-weight:500;border:none;cursor:pointer;font-family:var(--font-sans)}
+.hn-ghost{background:rgba(255,255,255,.12);color:#fff}
+.hn-solid{background:#27C47A;color:#0a2d52}
+.hero-badge{display:inline-flex;align-items:center;gap:6px;background:rgba(39,196,122,.15);border:1px solid rgba(39,196,122,.35);border-radius:20px;padding:5px 14px;margin-bottom:20px;position:relative;z-index:1}
+.hero-badge span{font-size:12px;font-weight:500;color:#27C47A;letter-spacing:.04em}
+.badge-dot{width:6px;height:6px;border-radius:50%;background:#27C47A}
+.hero h1{font-size:38px;font-weight:500;color:#fff;line-height:1.15;margin-bottom:14px;position:relative;z-index:1}
+.hero h1 em{color:#27C47A;font-style:normal}
+.hero-sub{font-size:15px;color:rgba(255,255,255,.65);max-width:420px;margin:0 auto 32px;line-height:1.65;position:relative;z-index:1}
+.hero-ctas{display:flex;gap:12px;justify-content:center;flex-wrap:wrap;position:relative;z-index:1}
+.btn-primary{padding:14px 28px;background:#27C47A;color:#0a2d52;border:none;border-radius:10px;font-size:14px;font-weight:500;cursor:pointer;font-family:var(--font-sans)}
+.btn-ghost{padding:14px 28px;background:rgba(255,255,255,.1);color:#fff;border:1px solid rgba(255,255,255,.25);border-radius:10px;font-size:14px;font-weight:500;cursor:pointer;font-family:var(--font-sans)}
+.hero-stats{display:flex;gap:0;margin-top:48px;position:relative;z-index:1;border-top:1px solid rgba(255,255,255,.1);padding-top:32px}
+.hstat{flex:1;text-align:center;padding:0 16px;border-right:1px solid rgba(255,255,255,.1)}
+.hstat:last-child{border-right:none}
+.hstat-n{font-size:26px;font-weight:500;color:#fff;display:block}
+.hstat-l{font-size:12px;color:rgba(255,255,255,.5);margin-top:2px;display:block}
+
+/* phones mockup */
+.phones-wrap{background:#0a2040;padding:48px 24px;display:flex;justify-content:center;gap:16px;align-items:flex-start;flex-wrap:wrap}
+.phone{width:180px;background:#0E3D6B;border-radius:24px;overflow:hidden;border:2px solid rgba(255,255,255,.1)}
+.phone-bar{height:24px;background:#0a2d52;display:flex;align-items:center;justify-content:center}
+.phone-dot{width:40px;height:5px;background:rgba(255,255,255,.2);border-radius:4px}
+.phone-screen{padding:16px 12px;min-height:340px}
+.ps-header{display:flex;align-items:center;justify-content:space-between;margin-bottom:16px}
+.ps-back{width:28px;height:28px;border-radius:8px;background:rgba(255,255,255,.08);display:flex;align-items:center;justify-content:center}
+.ps-back svg{width:14px;height:14px}
+.ps-title{font-size:13px;font-weight:500;color:#fff}
+.ps-notif{width:28px;height:28px;border-radius:50%;background:rgba(39,196,122,.2);display:flex;align-items:center;justify-content:center;position:relative}
+.ps-notif::after{content:'';position:absolute;top:5px;right:5px;width:7px;height:7px;border-radius:50%;background:#27C47A}
+
+/* screen 1: home */
+.s1-greeting{margin-bottom:14px}
+.s1-hello{font-size:11px;color:rgba(255,255,255,.5)}
+.s1-name{font-size:16px;font-weight:500;color:#fff}
+.s1-balance-card{background:#27C47A;border-radius:14px;padding:16px;margin-bottom:12px}
+.s1-bal-label{font-size:10px;color:rgba(10,45,82,.7);margin-bottom:4px}
+.s1-bal-amount{font-size:22px;font-weight:500;color:#0a2d52}
+.s1-bal-sub{font-size:10px;color:rgba(10,45,82,.6);margin-top:2px}
+.s1-actions{display:grid;grid-template-columns:1fr 1fr;gap:8px;margin-bottom:12px}
+.s1-action{background:rgba(255,255,255,.06);border-radius:10px;padding:10px 8px;text-align:center}
+.s1-action-icon{width:28px;height:28px;border-radius:8px;background:rgba(39,196,122,.2);display:flex;align-items:center;justify-content:center;margin:0 auto 6px}
+.s1-action-icon svg{width:14px;height:14px}
+.s1-action-label{font-size:10px;color:rgba(255,255,255,.7)}
+.s1-recent{font-size:11px;font-weight:500;color:rgba(255,255,255,.8);margin-bottom:8px}
+.s1-loan-item{display:flex;align-items:center;gap:8px;padding:8px 0;border-bottom:1px solid rgba(255,255,255,.06)}
+.s1-li-icon{width:28px;height:28px;border-radius:8px;background:#1a5a9a;display:flex;align-items:center;justify-content:center;flex-shrink:0}
+.s1-li-info{flex:1}
+.s1-li-name{font-size:11px;font-weight:500;color:#fff}
+.s1-li-date{font-size:10px;color:rgba(255,255,255,.4)}
+.s1-li-amount{font-size:12px;font-weight:500;color:#27C47A}
+
+/* screen 2: apply */
+.s2-prog{display:flex;gap:4px;margin-bottom:14px}
+.s2-step{flex:1;height:3px;border-radius:2px;background:rgba(255,255,255,.1)}
+.s2-step.done{background:#27C47A}
+.s2-step.active{background:#5be8a3}
+.s2-form-label{font-size:10px;color:rgba(255,255,255,.5);margin-bottom:5px}
+.s2-input{width:100%;background:rgba(255,255,255,.07);border:1px solid rgba(255,255,255,.1);border-radius:8px;padding:9px 10px;color:#fff;font-size:12px;margin-bottom:10px;font-family:var(--font-sans)}
+.s2-input::placeholder{color:rgba(255,255,255,.25)}
+.s2-amount-display{background:rgba(39,196,122,.1);border:1px solid rgba(39,196,122,.25);border-radius:10px;padding:12px;text-align:center;margin-bottom:10px}
+.s2-amount-big{font-size:28px;font-weight:500;color:#27C47A}
+.s2-amount-label{font-size:10px;color:rgba(255,255,255,.4);margin-top:2px}
+.s2-slider{width:100%;margin-bottom:14px;accent-color:#27C47A}
+.s2-row{display:flex;justify-content:space-between;font-size:10px;color:rgba(255,255,255,.4);margin-bottom:12px}
+.s2-pill-row{display:flex;gap:6px;margin-bottom:12px;flex-wrap:wrap}
+.s2-pill{padding:5px 10px;border-radius:20px;font-size:10px;border:1px solid rgba(255,255,255,.15);color:rgba(255,255,255,.6);cursor:pointer}
+.s2-pill.sel{background:#27C47A;color:#0a2d52;border-color:#27C47A}
+.s2-next{width:100%;padding:11px;background:#27C47A;color:#0a2d52;border:none;border-radius:9px;font-size:13px;font-weight:500;cursor:pointer;font-family:var(--font-sans)}
+
+/* screen 3: status */
+.s3-approved{text-align:center;padding:12px 0 16px}
+.s3-check{width:52px;height:52px;border-radius:50%;background:rgba(39,196,122,.15);border:2px solid #27C47A;display:flex;align-items:center;justify-content:center;margin:0 auto 10px}
+.s3-check svg{width:24px;height:24px}
+.s3-approved-label{font-size:11px;color:rgba(255,255,255,.5);margin-bottom:3px}
+.s3-approved-amount{font-size:24px;font-weight:500;color:#27C47A}
+.s3-details{background:rgba(255,255,255,.05);border-radius:10px;padding:12px;margin-top:12px}
+.s3-row{display:flex;justify-content:space-between;padding:5px 0;border-bottom:1px solid rgba(255,255,255,.06)}
+.s3-row:last-child{border-bottom:none}
+.s3-key{font-size:10px;color:rgba(255,255,255,.4)}
+.s3-val{font-size:10px;font-weight:500;color:#fff}
+.s3-val.green{color:#27C47A}
+.s3-disbursed{margin-top:12px;background:#27C47A;border-radius:9px;padding:11px;text-align:center;font-size:13px;font-weight:500;color:#0a2d52}
+
+/* features section */
+.features-section{padding:52px 32px;background:var(--color-background-primary)}
+.sec-label{font-size:12px;font-weight:500;color:#0E6E56;letter-spacing:.06em;text-transform:uppercase;margin-bottom:8px}
+.sec-title{font-size:26px;font-weight:500;color:var(--color-text-primary);margin-bottom:8px;line-height:1.25}
+.sec-sub{font-size:14px;color:var(--color-text-secondary);max-width:440px;line-height:1.65;margin-bottom:36px}
+.features-grid{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:16px}
+.feat-card{background:var(--color-background-primary);border:0.5px solid var(--color-border-tertiary);border-radius:var(--border-radius-lg);padding:22px}
+.feat-icon{width:44px;height:44px;border-radius:12px;display:flex;align-items:center;justify-content:center;margin-bottom:14px}
+.feat-icon svg{width:22px;height:22px}
+.fi-green{background:#EAF3DE}
+.fi-blue{background:#E6F1FB}
+.fi-teal{background:#E1F5EE}
+.fi-amber{background:#FAEEDA}
+.fi-purple{background:#EEEDFE}
+.fi-coral{background:#FAECE7}
+.feat-title{font-size:14px;font-weight:500;color:var(--color-text-primary);margin-bottom:6px}
+.feat-desc{font-size:13px;color:var(--color-text-secondary);line-height:1.6}
+
+/* calculator section */
+.calc-section{padding:52px 32px;background:var(--color-background-secondary);border-top:0.5px solid var(--color-border-tertiary)}
+.calc-grid{display:grid;grid-template-columns:1fr 1fr;gap:32px;align-items:start;margin-top:36px}
+.calc-card{background:var(--color-background-primary);border:0.5px solid var(--color-border-tertiary);border-radius:var(--border-radius-lg);padding:28px}
+.calc-row{margin-bottom:20px}
+.calc-label{font-size:12px;color:var(--color-text-secondary);margin-bottom:6px;display:flex;justify-content:space-between}
+.calc-val{font-size:14px;font-weight:500;color:var(--color-text-primary)}
+.calc-slider{width:100%;margin-top:6px;accent-color:#0E3D6B}
+.calc-pills{display:flex;gap:6px;flex-wrap:wrap;margin-top:8px}
+.calc-pill{padding:5px 12px;border-radius:20px;font-size:12px;border:0.5px solid var(--color-border-secondary);color:var(--color-text-secondary);cursor:pointer;background:var(--color-background-primary)}
+.calc-pill.active{background:#0E3D6B;color:#fff;border-color:#0E3D6B}
+.result-card{background:#0E3D6B;border-radius:var(--border-radius-lg);padding:28px}
+.result-title{font-size:13px;color:rgba(255,255,255,.6);margin-bottom:4px}
+.result-amount{font-size:36px;font-weight:500;color:#fff;margin-bottom:4px}
+.result-sub{font-size:13px;color:rgba(255,255,255,.5);margin-bottom:24px}
+.result-breakdown{display:grid;grid-template-columns:1fr 1fr;gap:12px;margin-bottom:20px}
+.rb-item{background:rgba(255,255,255,.08);border-radius:10px;padding:12px}
+.rb-label{font-size:11px;color:rgba(255,255,255,.5);margin-bottom:4px}
+.rb-val{font-size:16px;font-weight:500;color:#fff}
+.rb-val.green{color:#27C47A}
+.result-apply{width:100%;padding:13px;background:#27C47A;color:#0a2d52;border:none;border-radius:9px;font-size:14px;font-weight:500;cursor:pointer;font-family:var(--font-sans)}
+
+/* loan types */
+.loan-types{padding:52px 32px;background:var(--color-background-primary);border-top:0.5px solid var(--color-border-tertiary)}
+.loan-grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:14px;margin-top:32px}
+.loan-card{border-radius:var(--border-radius-lg);padding:24px;border:0.5px solid var(--color-border-tertiary);background:var(--color-background-primary);position:relative;overflow:hidden}
+.loan-card.featured{border:2px solid #0E3D6B}
+.loan-badge{position:absolute;top:16px;right:16px;background:#E6F1FB;color:#0C447C;font-size:11px;font-weight:500;padding:3px 10px;border-radius:20px}
+.loan-badge.new{background:#EAF3DE;color:#27500A}
+.loan-icon{width:40px;height:40px;border-radius:10px;display:flex;align-items:center;justify-content:center;margin-bottom:14px}
+.loan-icon svg{width:20px;height:20px}
+.li-blue{background:#E6F1FB}
+.li-green{background:#EAF3DE}
+.li-amber{background:#FAEEDA}
+.li-teal{background:#E1F5EE}
+.loan-name{font-size:15px;font-weight:500;color:var(--color-text-primary);margin-bottom:6px}
+.loan-desc{font-size:13px;color:var(--color-text-secondary);line-height:1.55;margin-bottom:14px}
+.loan-detail{display:flex;gap:12px;flex-wrap:wrap}
+.ld-chip{background:var(--color-background-secondary);border-radius:6px;padding:4px 10px;font-size:11px;color:var(--color-text-secondary)}
+.ld-chip strong{color:var(--color-text-primary);font-weight:500}
+
+/* how it works */
+.how-section{padding:52px 32px;background:var(--color-background-secondary);border-top:0.5px solid var(--color-border-tertiary)}
+.steps-row{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:0;margin-top:36px;position:relative}
+.steps-row::before{content:'';position:absolute;top:22px;left:calc(12.5% + 22px);right:calc(12.5% + 22px);height:1px;background:var(--color-border-tertiary)}
+.step-item{text-align:center;padding:0 12px;position:relative}
+.step-num{width:44px;height:44px;border-radius:50%;display:flex;align-items:center;justify-content:center;margin:0 auto 14px;font-size:15px;font-weight:500;position:relative;z-index:1}
+.sn-1{background:#E6F1FB;color:#0C447C}
+.sn-2{background:#EAF3DE;color:#27500A}
+.sn-3{background:#FAEEDA;color:#633806}
+.sn-4{background:#0E3D6B;color:#fff}
+.step-title{font-size:13px;font-weight:500;color:var(--color-text-primary);margin-bottom:5px}
+.step-desc{font-size:12px;color:var(--color-text-secondary);line-height:1.55}
+
+/* testimonials */
+.testi-section{padding:52px 32px;background:var(--color-background-primary);border-top:0.5px solid var(--color-border-tertiary)}
+.testi-grid{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:14px;margin-top:32px}
+.testi-card{background:var(--color-background-primary);border:0.5px solid var(--color-border-tertiary);border-radius:var(--border-radius-lg);padding:22px}
+.testi-stars{display:flex;gap:2px;margin-bottom:12px}
+.star{width:14px;height:14px;background:#BA7517;clip-path:polygon(50% 0%,61% 35%,98% 35%,68% 57%,79% 91%,50% 70%,21% 91%,32% 57%,2% 35%,39% 35%)}
+.testi-text{font-size:13px;color:var(--color-text-secondary);line-height:1.65;margin-bottom:16px;font-style:italic}
+.testi-author{display:flex;align-items:center;gap:10px}
+.testi-avatar{width:36px;height:36px;border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:13px;font-weight:500;flex-shrink:0}
+.ta-blue{background:#E6F1FB;color:#0C447C}
+.ta-green{background:#EAF3DE;color:#27500A}
+.ta-teal{background:#E1F5EE;color:#085041}
+.testi-name{font-size:13px;font-weight:500;color:var(--color-text-primary)}
+.testi-role{font-size:11px;color:var(--color-text-secondary)}
+
+/* trust badges */
+.trust-section{padding:32px;background:var(--color-background-secondary);border-top:0.5px solid var(--color-border-tertiary);display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:16px}
+.trust-item{display:flex;align-items:center;gap:8px}
+.trust-icon{width:32px;height:32px;border-radius:8px;background:var(--color-background-primary);border:0.5px solid var(--color-border-tertiary);display:flex;align-items:center;justify-content:center}
+.trust-icon svg{width:16px;height:16px}
+.trust-label{font-size:12px;color:var(--color-text-secondary)}
+.trust-label strong{display:block;font-size:13px;font-weight:500;color:var(--color-text-primary)}
+
+/* CTA */
+.cta-section{background:#0E3D6B;padding:52px 32px;text-align:center}
+.cta-title{font-size:28px;font-weight:500;color:#fff;margin-bottom:10px}
+.cta-sub{font-size:14px;color:rgba(255,255,255,.6);margin-bottom:28px;max-width:400px;margin-left:auto;margin-right:auto}
+.cta-btns{display:flex;gap:12px;justify-content:center;flex-wrap:wrap}
+.cta-primary{padding:14px 28px;background:#27C47A;color:#0a2d52;border:none;border-radius:10px;font-size:14px;font-weight:500;cursor:pointer;font-family:var(--font-sans)}
+.cta-ghost{padding:14px 28px;background:rgba(255,255,255,.1);color:#fff;border:1px solid rgba(255,255,255,.25);border-radius:10px;font-size:14px;font-weight:500;cursor:pointer;font-family:var(--font-sans)}
+.cta-note{margin-top:16px;font-size:12px;color:rgba(255,255,255,.35)}
+
+/* footer */
+.footer{padding:32px;background:#07192e;display:grid;grid-template-columns:2fr 1fr 1fr 1fr;gap:24px}
+.fl-brand-name{font-size:17px;font-weight:500;color:#fff;margin-bottom:6px}
+.fl-brand-name span{color:#27C47A}
+.fl-brand-desc{font-size:12px;color:rgba(255,255,255,.4);line-height:1.65;margin-bottom:14px;max-width:220px}
+.fl-social{display:flex;gap:8px}
+.fl-soc-btn{width:30px;height:30px;border-radius:8px;background:rgba(255,255,255,.08);display:flex;align-items:center;justify-content:center}
+.fl-soc-btn svg{width:14px;height:14px}
+.fl-col h4{font-size:12px;font-weight:500;color:rgba(255,255,255,.7);margin-bottom:12px;letter-spacing:.04em}
+.fl-col a{display:block;font-size:12px;color:rgba(255,255,255,.4);margin-bottom:8px;text-decoration:none}
+.fl-col a:hover{color:rgba(255,255,255,.75)}
+.footer-bottom{background:#07192e;padding:16px 32px;border-top:1px solid rgba(255,255,255,.06);display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:8px}
+.fb-copy{font-size:12px;color:rgba(255,255,255,.3)}
+.fb-links{display:flex;gap:16px}
+.fb-links a{font-size:12px;color:rgba(255,255,255,.35);text-decoration:none}
+
+@media(max-width:680px){
+  .features-grid,.steps-row{grid-template-columns:1fr 1fr}
+  .calc-grid{grid-template-columns:1fr}
+  .loan-grid{grid-template-columns:1fr}
+  .testi-grid{grid-template-columns:1fr}
+  .footer{grid-template-columns:1fr 1fr}
+  .phones-wrap{gap:10px}
+  .phone{width:155px}
+  .steps-row::before{display:none}
+  .hero h1{font-size:28px}
+}
+</style>
+
+<div class="rl-wrap">
+
+<div class="hero">
+  <div class="logo-row">
+    <div class="logo">
+      <div class="logo-mark">
+        <svg viewBox="0 0 20 20" fill="none"><path d="M3 10h4l2-6 4 12 2-6h2" stroke="#0a2d52" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg>
+      </div>
+      <span class="logo-name">Ready<span>Loan</span></span>
+    </div>
+    <div class="hero-nav">
+      <button class="hn-btn hn-ghost">Sign in</button>
+      <button class="hn-btn hn-solid">Apply now</button>
+    </div>
+  </div>
+  <div class="hero-badge"><div class="badge-dot"></div><span>Trusted by 50,000+ borrowers across Ghana</span></div>
+  <h1>Fast loans for<br><em>businesses & people</em><br>who need it now</h1>
+  <p class="hero-sub">Apply in 5 minutes. Get approved in hours. Funds disbursed directly to your account — no paperwork, no queues.</p>
+  <div class="hero-ctas">
+    <button class="btn-primary">Apply for a loan</button>
+    <button class="btn-ghost">Calculate my loan</button>
+  </div>
+  <div class="hero-stats">
+    <div class="hstat"><span class="hstat-n">GH₵500M+</span><span class="hstat-l">Total disbursed</span></div>
+    <div class="hstat"><span class="hstat-n">50K+</span><span class="hstat-l">Happy customers</span></div>
+    <div class="hstat"><span class="hstat-n">2 hrs</span><span class="hstat-l">Avg. approval time</span></div>
+    <div class="hstat"><span class="hstat-n">4.9 ★</span><span class="hstat-l">App store rating</span></div>
+  </div>
+</div>
+
+<div class="phones-wrap">
+  <div class="phone">
+    <div class="phone-bar"><div class="phone-dot"></div></div>
+    <div class="phone-screen">
+      <div class="ps-header">
+        <div class="ps-back"><svg viewBox="0 0 14 14" fill="none"><path d="M9 3L5 7l4 4" stroke="rgba(255,255,255,.7)" stroke-width="1.4" stroke-linecap="round"/></svg></div>
+        <span class="ps-title">Home</span>
+        <div class="ps-notif"><svg viewBox="0 0 14 14" fill="none"><path d="M7 2a3 3 0 013 3v2l1 2H3l1-2V5a3 3 0 013-3z" stroke="#27C47A" stroke-width="1.3"/><path d="M5.5 9.5a1.5 1.5 0 003 0" stroke="#27C47A" stroke-width="1.3"/></svg></div>
+      </div>
+      <div class="s1-greeting"><div class="s1-hello">Good morning 👋</div><div class="s1-name">Abena Mensah</div></div>
+      <div class="s1-balance-card">
+        <div class="s1-bal-label">Active Loan Balance</div>
+        <div class="s1-bal-amount">GH₵ 8,500.00</div>
+        <div class="s1-bal-sub">Next repayment: Mar 31 • GH₵ 1,200</div>
+      </div>
+      <div class="s1-actions">
+        <div class="s1-action"><div class="s1-action-icon"><svg viewBox="0 0 14 14" fill="none"><path d="M3 7h8M7 3l4 4-4 4" stroke="#27C47A" stroke-width="1.4" stroke-linecap="round"/></svg></div><div class="s1-action-label">Apply Loan</div></div>
+        <div class="s1-action"><div class="s1-action-icon"><svg viewBox="0 0 14 14" fill="none"><rect x="2" y="3" width="10" height="8" rx="1.5" stroke="#27C47A" stroke-width="1.3"/><path d="M2 6h10" stroke="#27C47A" stroke-width="1.3"/></svg></div><div class="s1-action-label">Repay</div></div>
+        <div class="s1-action"><div class="s1-action-icon"><svg viewBox="0 0 14 14" fill="none"><circle cx="7" cy="7" r="4" stroke="#27C47A" stroke-width="1.3"/><path d="M7 5v2l1.5 1.5" stroke="#27C47A" stroke-width="1.3" stroke-linecap="round"/></svg></div><div class="s1-action-label">History</div></div>
+        <div class="s1-action"><div class="s1-action-icon"><svg viewBox="0 0 14 14" fill="none"><path d="M7 2v10M2 7h10" stroke="#27C47A" stroke-width="1.4" stroke-linecap="round"/></svg></div><div class="s1-action-label">Top Up</div></div>
+      </div>
+      <div class="s1-recent">Recent loans</div>
+      <div class="s1-loan-item"><div class="s1-li-icon"><svg viewBox="0 0 14 14" fill="none" width="14" height="14"><rect x="2" y="4" width="10" height="7" rx="1" stroke="rgba(255,255,255,.6)" stroke-width="1.2"/><path d="M5 4V3a2 2 0 014 0v1" stroke="rgba(255,255,255,.6)" stroke-width="1.2"/></svg></div><div class="s1-li-info"><div class="s1-li-name">Business Boost</div><div class="s1-li-date">Feb 12 • Active</div></div><div class="s1-li-amount">+8,500</div></div>
+      <div class="s1-loan-item"><div class="s1-li-icon"><svg viewBox="0 0 14 14" fill="none" width="14" height="14"><circle cx="7" cy="5" r="2.5" stroke="rgba(255,255,255,.6)" stroke-width="1.2"/><path d="M2 11.5c0-2.5 2.2-4.5 5-4.5s5 2 5 4.5" stroke="rgba(255,255,255,.6)" stroke-width="1.2"/></svg></div><div class="s1-li-info"><div class="s1-li-name">Personal Loan</div><div class="s1-li-date">Jan 5 • Paid off</div></div><div class="s1-li-amount" style="color:rgba(255,255,255,.4)">5,000</div></div>
+    </div>
+  </div>
+
+  <div class="phone" style="margin-top:24px">
+    <div class="phone-bar"><div class="phone-dot"></div></div>
+    <div class="phone-screen">
+      <div class="ps-header">
+        <div class="ps-back"><svg viewBox="0 0 14 14" fill="none"><path d="M9 3L5 7l4 4" stroke="rgba(255,255,255,.7)" stroke-width="1.4" stroke-linecap="round"/></svg></div>
+        <span class="ps-title">Apply for a loan</span>
+        <div style="width:28px"></div>
+      </div>
+      <div class="s2-prog"><div class="s2-step done"></div><div class="s2-step active"></div><div class="s2-step"></div><div class="s2-step"></div></div>
+      <div class="s2-form-label">Loan amount</div>
+      <div class="s2-amount-display">
+        <div class="s2-amount-big" id="phone-amount">GH₵ 5,000</div>
+        <div class="s2-amount-label">Select your loan amount</div>
+      </div>
+      <input class="s2-slider" type="range" min="500" max="50000" step="500" value="5000" id="phone-slider">
+      <div class="s2-row"><span>GH₵ 500</span><span>GH₵ 50,000</span></div>
+      <div class="s2-form-label">Loan purpose</div>
+      <div class="s2-pill-row">
+        <div class="s2-pill sel">Business</div>
+        <div class="s2-pill">Personal</div>
+        <div class="s2-pill">Education</div>
+        <div class="s2-pill">Emergency</div>
+      </div>
+      <div class="s2-form-label">Repayment term</div>
+      <div class="s2-pill-row">
+        <div class="s2-pill">3 mo</div>
+        <div class="s2-pill sel">6 mo</div>
+        <div class="s2-pill">12 mo</div>
+        <div class="s2-pill">18 mo</div>
+      </div>
+      <button class="s2-next">Continue →</button>
+    </div>
+  </div>
+
+  <div class="phone">
+    <div class="phone-bar"><div class="phone-dot"></div></div>
+    <div class="phone-screen">
+      <div class="ps-header">
+        <div class="ps-back"><svg viewBox="0 0 14 14" fill="none"><path d="M9 3L5 7l4 4" stroke="rgba(255,255,255,.7)" stroke-width="1.4" stroke-linecap="round"/></svg></div>
+        <span class="ps-title">Loan approved</span>
+        <div style="width:28px"></div>
+      </div>
+      <div class="s3-approved">
+        <div class="s3-check"><svg viewBox="0 0 24 24" fill="none"><path d="M5 13l4 4L19 7" stroke="#27C47A" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/></svg></div>
+        <div class="s3-approved-label">Congratulations! You're approved</div>
+        <div class="s3-approved-amount">GH₵ 5,000</div>
+      </div>
+      <div class="s3-details">
+        <div class="s3-row"><span class="s3-key">Loan type</span><span class="s3-val">Business Boost</span></div>
+        <div class="s3-row"><span class="s3-key">Interest rate</span><span class="s3-val green">3.5% / month</span></div>
+        <div class="s3-row"><span class="s3-key">Term</span><span class="s3-val">6 months</span></div>
+        <div class="s3-row"><span class="s3-key">Monthly payment</span><span class="s3-val">GH₵ 917</span></div>
+        <div class="s3-row"><span class="s3-key">First due date</span><span class="s3-val">Apr 26, 2026</span></div>
+        <div class="s3-row"><span class="s3-key">Disbursement</span><span class="s3-val green">Within 2 hrs</span></div>
+      </div>
+      <div class="s3-disbursed">Accept &amp; Get Funds</div>
+    </div>
+  </div>
+</div>
+
+<div class="features-section">
+  <div class="sec-label">Why ReadyLoan</div>
+  <div class="sec-title">Everything you need,<br>right in your pocket</div>
+  <p class="sec-sub">ReadyLoan is built for speed, simplicity, and trust — giving businesses and individuals instant access to the funds they need.</p>
+  <div class="features-grid">
+    <div class="feat-card">
+      <div class="feat-icon fi-green"><svg viewBox="0 0 22 22" fill="none"><path d="M11 3v18M6 7l5-4 5 4" stroke="#3B6D11" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/><rect x="4" y="11" width="14" height="8" rx="2" stroke="#3B6D11" stroke-width="1.5"/></svg></div>
+      <div class="feat-title">Instant disbursement</div>
+      <div class="feat-desc">Approved funds hit your mobile money or bank account within 2 hours — any time, any day.</div>
+    </div>
+    <div class="feat-card">
+      <div class="feat-icon fi-blue"><svg viewBox="0 0 22 22" fill="none"><path d="M3 11h4l2-5 4 10 2-5h4" stroke="#185FA5" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg></div>
+      <div class="feat-title">5-minute application</div>
+      <div class="feat-desc">Simple, fully digital application — fill in your details, upload your ID, and submit. No branch visits required.</div>
+    </div>
+    <div class="feat-card">
+      <div class="feat-icon fi-teal"><svg viewBox="0 0 22 22" fill="none"><circle cx="11" cy="11" r="7" stroke="#0F6E56" stroke-width="1.5"/><path d="M8 11l2 2 4-4" stroke="#0F6E56" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg></div>
+      <div class="feat-title">AI credit scoring</div>
+      <div class="feat-desc">Our smart system evaluates your eligibility in real-time using alternative data — giving more people access to credit.</div>
+    </div>
+    <div class="feat-card">
+      <div class="feat-icon fi-amber"><svg viewBox="0 0 22 22" fill="none"><rect x="3" y="6" width="16" height="12" rx="2" stroke="#854F0B" stroke-width="1.5"/><path d="M7 6V5a4 4 0 018 0v1" stroke="#854F0B" stroke-width="1.5"/><circle cx="11" cy="13" r="2" stroke="#854F0B" stroke-width="1.4"/></svg></div>
+      <div class="feat-title">Bank-grade security</div>
+      <div class="feat-desc">256-bit encryption, two-factor authentication, and biometric login protect every transaction and your personal data.</div>
+    </div>
+    <div class="feat-card">
+      <div class="feat-icon fi-purple"><svg viewBox="0 0 22 22" fill="none"><path d="M4 17V8a3 3 0 013-3h8a3 3 0 013 3v9" stroke="#534AB7" stroke-width="1.5"/><path d="M2 17h18M9 12h4M9 15h4M8 9h1" stroke="#534AB7" stroke-width="1.5" stroke-linecap="round"/></svg></div>
+      <div class="feat-title">Flexible repayments</div>
+      <div class="feat-desc">Choose your repayment schedule — weekly, bi-weekly, or monthly. Repay early with zero penalties.</div>
+    </div>
+    <div class="feat-card">
+      <div class="feat-icon fi-coral"><svg viewBox="0 0 22 22" fill="none"><path d="M11 3l2 6h6l-5 3.5 2 6L11 15l-5 3.5 2-6L3 9h6z" stroke="#993C1D" stroke-width="1.5" stroke-linejoin="round"/></svg></div>
+      <div class="feat-title">Loyalty rewards</div>
+      <div class="feat-desc">Earn ReadyPoints on every repayment. Redeem for lower interest rates, higher loan limits, and exclusive perks.</div>
+    </div>
+  </div>
+</div>
+
+<div class="calc-section">
+  <div class="sec-label">Loan calculator</div>
+  <div class="sec-title">Know your numbers<br>before you apply</div>
+  <div class="calc-grid">
+    <div class="calc-card">
+      <div class="calc-row">
+        <div class="calc-label"><span>Loan amount</span><span class="calc-val" id="c-amount">GH₵ 10,000</span></div>
+        <input class="calc-slider" type="range" min="500" max="100000" step="500" value="10000" id="c-slider-amount">
+        <div style="display:flex;justify-content:space-between;font-size:11px;color:var(--color-text-secondary);margin-top:4px"><span>GH₵ 500</span><span>GH₵ 100K</span></div>
+      </div>
+      <div class="calc-row">
+        <div class="calc-label"><span>Loan term</span><span class="calc-val" id="c-term">6 months</span></div>
+        <div class="calc-pills">
+          <div class="calc-pill" onclick="setTerm(3,this)">3 mo</div>
+          <div class="calc-pill active" onclick="setTerm(6,this)">6 mo</div>
+          <div class="calc-pill" onclick="setTerm(12,this)">12 mo</div>
+          <div class="calc-pill" onclick="setTerm(18,this)">18 mo</div>
+          <div class="calc-pill" onclick="setTerm(24,this)">24 mo</div>
+        </div>
+      </div>
+      <div class="calc-row">
+        <div class="calc-label"><span>Loan type</span><span class="calc-val" id="c-rate-display">3.5% / mo</span></div>
+        <div class="calc-pills">
+          <div class="calc-pill active" onclick="setRate(3.5,'Personal',this)">Personal</div>
+          <div class="calc-pill" onclick="setRate(3.0,'Business',this)">Business</div>
+          <div class="calc-pill" onclick="setRate(2.5,'Premium',this)">Premium</div>
+        </div>
+      </div>
+    </div>
+    <div class="result-card">
+      <div class="result-title">Monthly repayment</div>
+      <div class="result-amount" id="c-monthly">GH₵ 2,042</div>
+      <div class="result-sub" id="c-summary">GH₵ 10,000 over 6 months at 3.5%/mo</div>
+      <div class="result-breakdown">
+        <div class="rb-item"><div class="rb-label">Total repayment</div><div class="rb-val" id="c-total">GH₵ 12,250</div></div>
+        <div class="rb-item"><div class="rb-label">Total interest</div><div class="rb-val green" id="c-interest">GH₵ 2,250</div></div>
+        <div class="rb-item"><div class="rb-label">Interest rate</div><div class="rb-val" id="c-rate-out">3.5% / mo</div></div>
+        <div class="rb-item"><div class="rb-label">Approval time</div><div class="rb-val green">~ 2 hours</div></div>
+      </div>
+      <button class="result-apply">Apply for this loan</button>
+    </div>
+  </div>
+</div>
+
+<div class="loan-types">
+  <div class="sec-label">Loan products</div>
+  <div class="sec-title">Find the right loan<br>for your situation</div>
+  <div class="loan-grid">
+    <div class="loan-card featured">
+      <div class="loan-badge">Most popular</div>
+      <div class="loan-icon li-blue"><svg viewBox="0 0 20 20" fill="none"><rect x="2" y="5" width="16" height="12" rx="2" stroke="#185FA5" stroke-width="1.5"/><path d="M6 5V4a4 4 0 018 0v1" stroke="#185FA5" stroke-width="1.5"/><circle cx="10" cy="12" r="2" stroke="#185FA5" stroke-width="1.4"/></svg></div>
+      <div class="loan-name">Personal Loan</div>
+      <div class="loan-desc">For individuals needing funds for personal expenses, emergencies, home improvements, or any personal goal.</div>
+      <div class="loan-detail">
+        <div class="ld-chip"><strong>GH₵ 500 – 20,000</strong></div>
+        <div class="ld-chip"><strong>3.5%</strong> / mo</div>
+        <div class="ld-chip"><strong>3–18</strong> months</div>
+      </div>
+    </div>
+    <div class="loan-card">
+      <div class="loan-badge new">For SMEs</div>
+      <div class="loan-icon li-green"><svg viewBox="0 0 20 20" fill="none"><path d="M4 17V9a2 2 0 012-2h8a2 2 0 012 2v8" stroke="#3B6D11" stroke-width="1.5"/><path d="M2 17h16M8 12h4M8 15h4" stroke="#3B6D11" stroke-width="1.5" stroke-linecap="round"/><path d="M7 7V5a3 3 0 016 0v2" stroke="#3B6D11" stroke-width="1.4"/></svg></div>
+      <div class="loan-name">Business Boost</div>
+      <div class="loan-desc">Designed for small and medium businesses needing capital for inventory, equipment, operations, or expansion.</div>
+      <div class="loan-detail">
+        <div class="ld-chip"><strong>GH₵ 1,000 – 100,000</strong></div>
+        <div class="ld-chip"><strong>3.0%</strong> / mo</div>
+        <div class="ld-chip"><strong>6–24</strong> months</div>
+      </div>
+    </div>
+    <div class="loan-card">
+      <div class="loan-icon li-amber"><svg viewBox="0 0 20 20" fill="none"><path d="M10 3l2 5h5l-4 3 1.5 5L10 13l-4.5 3L7 11 3 8h5z" stroke="#854F0B" stroke-width="1.5" stroke-linejoin="round"/></svg></div>
+      <div class="loan-name">Emergency Cash</div>
+      <div class="loan-desc">Urgent situations call for quick action. Get funds disbursed in under 30 minutes with minimal documentation.</div>
+      <div class="loan-detail">
+        <div class="ld-chip"><strong>GH₵ 200 – 5,000</strong></div>
+        <div class="ld-chip"><strong>4.0%</strong> / mo</div>
+        <div class="ld-chip"><strong>1–3</strong> months</div>
+      </div>
+    </div>
+    <div class="loan-card">
+      <div class="loan-icon li-teal"><svg viewBox="0 0 20 20" fill="none"><path d="M3 15L7 9l3 4 3-6 4 8" stroke="#0F6E56" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/><circle cx="15" cy="5" r="2.5" stroke="#0F6E56" stroke-width="1.4"/></svg></div>
+      <div class="loan-name">Premium Line</div>
+      <div class="loan-desc">For established customers with good repayment history. Enjoy higher limits, lower rates, and priority processing.</div>
+      <div class="loan-detail">
+        <div class="ld-chip"><strong>Up to GH₵ 500,000</strong></div>
+        <div class="ld-chip"><strong>2.5%</strong> / mo</div>
+        <div class="ld-chip"><strong>12–36</strong> months</div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="how-section">
+  <div class="sec-label">How it works</div>
+  <div class="sec-title">Get funded in 4 simple steps</div>
+  <div class="steps-row">
+    <div class="step-item">
+      <div class="step-num sn-1">1</div>
+      <div class="step-title">Create account</div>
+      <div class="step-desc">Download the app and sign up with your phone number. Verification takes under 2 minutes.</div>
+    </div>
+    <div class="step-item">
+      <div class="step-num sn-2">2</div>
+      <div class="step-title">Apply online</div>
+      <div class="step-desc">Choose your loan type, amount, and term. Upload your Ghana Card or passport — no paperwork.</div>
+    </div>
+    <div class="step-item">
+      <div class="step-num sn-3">3</div>
+      <div class="step-title">Get approved</div>
+      <div class="step-desc">Our AI engine reviews your application instantly. Receive your decision via SMS and in-app notification.</div>
+    </div>
+    <div class="step-item">
+      <div class="step-num sn-4">4</div>
+      <div class="step-title">Receive funds</div>
+      <div class="step-desc">Accept the offer and funds are sent directly to your mobile money or bank account within 2 hours.</div>
+    </div>
+  </div>
+</div>
+
+<div class="testi-section">
+  <div class="sec-label">Customer stories</div>
+  <div class="sec-title">People who chose ReadyLoan</div>
+  <div class="testi-grid">
+    <div class="testi-card">
+      <div class="testi-stars"><div class="star"></div><div class="star"></div><div class="star"></div><div class="star"></div><div class="star"></div></div>
+      <div class="testi-text">"I needed capital to restock my shop before Christmas. ReadyLoan approved GH₵ 15,000 within 3 hours. My sales doubled that season. Truly life-changing."</div>
+      <div class="testi-author"><div class="testi-avatar ta-green">AM</div><div><div class="testi-name">Ama Mensah</div><div class="testi-role">Clothing retailer, Kumasi</div></div></div>
+    </div>
+    <div class="testi-card">
+      <div class="testi-stars"><div class="star"></div><div class="star"></div><div class="star"></div><div class="star"></div><div class="star"></div></div>
+      <div class="testi-text">"As a nurse, unexpected expenses happen. ReadyLoan's emergency cash option saved me when my car broke down. Application took 4 minutes and funds arrived in 90 minutes."</div>
+      <div class="testi-author"><div class="testi-avatar ta-blue">KO</div><div><div class="testi-name">Kofi Osei</div><div class="testi-role">Healthcare professional, Accra</div></div></div>
+    </div>
+    <div class="testi-card">
+      <div class="testi-stars"><div class="star"></div><div class="star"></div><div class="star"></div><div class="star"></div><div class="star"></div></div>
+      <div class="testi-text">"I've taken three Business Boost loans with ReadyLoan. Each time, the process is faster and the rates are better. I'm now a Premium member and the benefits are outstanding."</div>
+      <div class="testi-author"><div class="testi-avatar ta-teal">SA</div><div><div class="testi-name">Sandra Asante</div><div class="testi-role">Restaurant owner, Takoradi</div></div></div>
+    </div>
+  </div>
+</div>
+
+<div class="trust-section">
+  <div class="trust-item"><div class="trust-icon"><svg viewBox="0 0 16 16" fill="none" width="16" height="16"><rect x="2" y="4" width="12" height="9" rx="1.5" stroke="var(--color-text-secondary)" stroke-width="1.2"/><path d="M5 4V3a3 3 0 016 0v1" stroke="var(--color-text-secondary)" stroke-width="1.2"/></svg></div><div class="trust-label"><strong>Bank of Ghana licensed</strong>Regulated & compliant</div></div>
+  <div class="trust-item"><div class="trust-icon"><svg viewBox="0 0 16 16" fill="none" width="16" height="16"><path d="M8 2l5 2.5V9c0 2.5-2 4.5-5 5C6 13.5 3 11.5 3 9V4.5z" stroke="var(--color-text-secondary)" stroke-width="1.2"/><path d="M5.5 8.5l2 2L11 6" stroke="var(--color-text-secondary)" stroke-width="1.3" stroke-linecap="round"/></svg></div><div class="trust-label"><strong>256-bit SSL encryption</strong>Data always protected</div></div>
+  <div class="trust-item"><div class="trust-icon"><svg viewBox="0 0 16 16" fill="none" width="16" height="16"><circle cx="8" cy="6" r="3" stroke="var(--color-text-secondary)" stroke-width="1.2"/><path d="M2 13c0-2.2 2.7-4 6-4s6 1.8 6 4" stroke="var(--color-text-secondary)" stroke-width="1.2"/></svg></div><div class="trust-label"><strong>50,000+ customers</strong>Trusted across Ghana</div></div>
+  <div class="trust-item"><div class="trust-icon"><svg viewBox="0 0 16 16" fill="none" width="16" height="16"><circle cx="8" cy="8" r="5.5" stroke="var(--color-text-secondary)" stroke-width="1.2"/><path d="M8 5v3l2 2" stroke="var(--color-text-secondary)" stroke-width="1.3" stroke-linecap="round"/></svg></div><div class="trust-label"><strong>24/7 support</strong>Always here for you</div></div>
+  <div class="trust-item"><div class="trust-icon"><svg viewBox="0 0 16 16" fill="none" width="16" height="16"><path d="M3 8l3.5 3.5L13 5" stroke="var(--color-text-secondary)" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round"/></svg></div><div class="trust-label"><strong>No hidden fees</strong>Transparent pricing</div></div>
+</div>
+
+<div class="cta-section">
+  <div class="cta-title">Ready when you are.</div>
+  <div class="cta-sub">Join over 50,000 Ghanaians who trust ReadyLoan for fast, fair, and flexible financing.</div>
+  <div class="cta-btns">
+    <button class="cta-primary">Apply for a loan today</button>
+    <button class="cta-ghost">Download the app</button>
+  </div>
+  <div class="cta-note">No paperwork. No queues. No hidden charges. Funds in hours.</div>
+</div>
+
+<div class="footer">
+  <div>
+    <div class="fl-brand-name">Ready<span>Loan</span></div>
+    <div class="fl-brand-desc">Fast, fair, and flexible loans for businesses and individuals across Ghana. Licensed by the Bank of Ghana.</div>
+    <div class="fl-social">
+      <div class="fl-soc-btn"><svg viewBox="0 0 14 14" fill="none" width="14" height="14"><path d="M8 3H6a2 2 0 00-2 2v6h2V7h2V5H6V5a1 1 0 011-1h1z" stroke="rgba(255,255,255,.5)" stroke-width="1.1"/></svg></div>
+      <div class="fl-soc-btn"><svg viewBox="0 0 14 14" fill="none" width="14" height="14"><rect x="2" y="2" width="10" height="10" rx="3" stroke="rgba(255,255,255,.5)" stroke-width="1.1"/><circle cx="7" cy="7" r="2.2" stroke="rgba(255,255,255,.5)" stroke-width="1.1"/></svg></div>
+      <div class="fl-soc-btn"><svg viewBox="0 0 14 14" fill="none" width="14" height="14"><path d="M2 4l5 4.5L12 4" stroke="rgba(255,255,255,.5)" stroke-width="1.1"/><rect x="2" y="3" width="10" height="8" rx="1.5" stroke="rgba(255,255,255,.5)" stroke-width="1.1"/></svg></div>
+    </div>
+  </div>
+  <div class="fl-col"><h4>Products</h4><a href="#">Personal Loan</a><a href="#">Business Boost</a><a href="#">Emergency Cash</a><a href="#">Premium Line</a></div>
+  <div class="fl-col"><h4>Company</h4><a href="#">About us</a><a href="#">How it works</a><a href="#">Loan calculator</a><a href="#">FAQs</a></div>
+  <div class="fl-col"><h4>Support</h4><a href="#">Contact us</a><a href="#">Privacy policy</a><a href="#">Terms of use</a><a href="#">Complaints</a></div>
+</div>
+<div class="footer-bottom">
+  <div class="fb-copy">© 2026 ReadyLoan. All rights reserved. Licensed by the Bank of Ghana.</div>
+  <div class="fb-links"><a href="#">Privacy</a><a href="#">Terms</a><a href="#">Cookies</a></div>
+</div>
+
+</div>
+
+<script>
+let loanAmount = 10000, loanTermMonths = 6, loanRate = 3.5;
+
+function calcAndUpdate() {
+  const r = loanRate / 100;
+  const n = loanTermMonths;
+  const monthly = loanAmount * r * Math.pow(1+r,n) / (Math.pow(1+r,n)-1);
+  const total = monthly * n;
+  const interest = total - loanAmount;
+  document.getElementById('c-monthly').textContent = 'GH₵ ' + Math.round(monthly).toLocaleString();
+  document.getElementById('c-total').textContent = 'GH₵ ' + Math.round(total).toLocaleString();
+  document.getElementById('c-interest').textContent = 'GH₵ ' + Math.round(interest).toLocaleString();
+  document.getElementById('c-amount').textContent = 'GH₵ ' + loanAmount.toLocaleString();
+  document.getElementById('c-summary').textContent = 'GH₵ ' + loanAmount.toLocaleString() + ' over ' + loanTermMonths + ' months at ' + loanRate + '%/mo';
+}
+
+document.getElementById('c-slider-amount').addEventListener('input', function() {
+  loanAmount = parseInt(this.value);
+  calcAndUpdate();
+});
+
+function setTerm(mo, el) {
+  loanTermMonths = mo;
+  document.getElementById('c-term').textContent = mo + ' month' + (mo > 1 ? 's' : '');
+  document.querySelectorAll('.calc-pills .calc-pill').forEach(p => {
+    if (p.getAttribute('onclick') && p.getAttribute('onclick').includes('setTerm')) p.classList.remove('active');
+  });
+  el.classList.add('active');
+  calcAndUpdate();
+}
+
+function setRate(rate, name, el) {
+  loanRate = rate;
+  document.getElementById('c-rate-display').textContent = rate + '% / mo';
+  document.getElementById('c-rate-out').textContent = rate + '% / mo';
+  document.querySelectorAll('.calc-pills .calc-pill').forEach(p => {
+    if (p.getAttribute('onclick') && p.getAttribute('onclick').includes('setRate')) p.classList.remove('active');
+  });
+  el.classList.add('active');
+  calcAndUpdate();
+}
+
+const phoneSlider = document.getElementById('phone-slider');
+if (phoneSlider) {
+  phoneSlider.addEventListener('input', function() {
+    const val = parseInt(this.value);
+    document.getElementById('phone-amount').textContent = 'GH₵ ' + val.toLocaleString();
+  });
+}
+
+calcAndUpdate();
+</script>
